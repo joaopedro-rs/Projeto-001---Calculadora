@@ -1,0 +1,54 @@
+#corpocalc {
+    display: grid;
+    background-color: rgb(214, 185, 161);
+    width: 600px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) ;
+    
+}
+
+.telacalc {
+    width: 580px;
+    height: 100px; 
+    background-color: rgb(169, 232, 227);
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    
+    
+    
+}
+
+.grade {
+    display: grid;
+    grid-template-columns: repeat(5,2fr);
+    max-width: 500px;
+}
+
+.calc {
+    display: grid;
+    grid-template-columns: repeat(5,2fr);
+    max-width: 500px;
+}
+
+.numb {
+    width: 100px;
+    height: 100px; 
+    border-color: black;
+    margin: 10px;
+    background-color: rgb(99, 115, 143);
+    border-radius: 10px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+    color: aliceblue;
+}
+
+
+
