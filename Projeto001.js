@@ -1,5 +1,6 @@
 const grade = document.querySelector(".grade")
 const numeros = grade.querySelectorAll('.numb')
+const tela = document.querySelector(".telacalc")
 
 const calc = document.querySelector('.calc');
 const multi = calc.querySelector('.multi');
@@ -17,8 +18,7 @@ let operador = '';
 
 function clicarNumero() {
     numeroAtual += this.textContent;
-    console.clear();
-    console.log(expressao + numeroAtual);
+    tela.innerHTML = expressao + numeroAtual;
 }
 
 function clicarSoma() {
@@ -26,20 +26,66 @@ function clicarSoma() {
     expressao += numeroAtual + '+';
     numeroAtual = '';
     operador = '+';
+    tela.innerHTML = expressao
+}
 
-    console.clear();
-    console.log(expressao);
+function clicarSub(){
+    resultado += Number(numeroAtual)
+    expressao += numeroAtual + '-'
+    numeroAtual = ''
+    operador = '-'
+    tela.innerHTML = expressao
+}
+
+function clicarMulti(){
+    resultado += Number(numeroAtual)
+    expressao += numeroAtual + '*'
+    numeroAtual = ''
+    operador = '*'
+    tela.innerHTML = expressao
+}
+
+function clicarDivi(){
+    resultado += Number(numeroAtual)
+    expressao += numeroAtual + '/'
+    numeroAtual = ''
+    operador = '/'
+    tela.innerHTML = expressao
 }
 
 function clicarIgual() {
     if (operador === '+') {
         resultado += Number(numeroAtual);
         expressao += numeroAtual;
-
         numeroAtual = String(resultado);
+        tela.innerHTML = numeroAtual
 
-        console.clear();
-        console.log(numeroAtual);
+        expressao = '';
+        resultado = 0;
+        operador = '';
+    } else if (operador === '-'){
+        resultado -= Number(numeroAtual);
+        expressao += numeroAtual;
+        numeroAtual = String(resultado);
+        tela.innerHTML = numeroAtual
+
+        expressao = '';
+        resultado = 0;
+        operador = '';
+    } else if (operador === '*'){
+        resultado *= Number(numeroAtual);
+        expressao += numeroAtual;
+        numeroAtual = String(resultado);
+        tela.innerHTML = numeroAtual
+
+        expressao = '';
+        resultado = 0;
+        operador = '';
+    } else if (operador === '/'){
+        resultado /= Number(numeroAtual);
+        expressao += numeroAtual;
+        numeroAtual = String(resultado);
+        tela.innerHTML = numeroAtual
 
         expressao = '';
         resultado = 0;
@@ -51,7 +97,7 @@ function clicaReset(){
     console.clear()
     numeroAtual = expressao = operador = ''
     resultado = 0
-    console.log(numeroAtual)
+    tela.innerHTML = numeroAtual
     
 }
 
@@ -62,6 +108,9 @@ for(let i=0; i<numeros.length; i++){
 }
 
 soma.onclick = clicarSoma
+sub.onclick = clicarSub
+divis.onclick = clicarDivi
+multi.onclick = clicarMulti
 igual.onclick = clicarIgual
 reset.onclick = clicaReset
 
