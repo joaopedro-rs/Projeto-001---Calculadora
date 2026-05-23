@@ -9,6 +9,8 @@ const soma  = calc.querySelector('.soma');
 const sub   = calc.querySelector('.sub');
 const igual = calc.querySelector('.igual');
 const reset = calc.querySelector('.reset');
+const apaga = calc.querySelector('.apaga');
+const ponto = calc.querySelector('.ponto');
 
 
 let numeroAtual = '';
@@ -22,20 +24,23 @@ function clicarNumero() {
 }
 
 function clicarSoma() {
-    resultado += Number(numeroAtual);
-    expressao += numeroAtual + '+';
-    numeroAtual = '';
-    operador = '+';
-    tela.innerHTML = expressao
-}
 
-function clicarSub(){
+    resultado += Number(numeroAtual)
+    expressao += numeroAtual + '+'
+    numeroAtual = ''
+    operador = '+'
+    tela.innerHTML = expressao
+}   
+   
+
+function clicarSub() {
     resultado += Number(numeroAtual)
     expressao += numeroAtual + '-'
     numeroAtual = ''
     operador = '-'
     tela.innerHTML = expressao
 }
+   
 
 function clicarMulti(){
     resultado += Number(numeroAtual)
@@ -93,12 +98,37 @@ function clicarIgual() {
     }
 }
 
+function apagaNumb(){
+    if(numeroAtual.length > 0){
+        numeroAtual = numeroAtual.slice(0,-1)//corta o último número
+    }else if(expressao.length > 0){
+        expressao = expressao.slice(0, -1)
+    }
+
+    tela.innerHTML = expressao + numeroAtual
+
+}
+
 function clicaReset(){
-    console.clear()
     numeroAtual = expressao = operador = ''
     resultado = 0
     tela.innerHTML = numeroAtual
     
+}
+
+function clicaPonto(){
+    if(numeroAtual.includes('.')){
+        return
+    }
+
+    if(numeroAtual === ''){
+        numeroAtual = '0.'
+    }else{
+        numeroAtual += '.'
+    }
+
+    tela.innerHTML = expressao + numeroAtual
+
 }
 
 
@@ -113,4 +143,5 @@ divis.onclick = clicarDivi
 multi.onclick = clicarMulti
 igual.onclick = clicarIgual
 reset.onclick = clicaReset
-
+apaga.onclick = apagaNumb
+ponto.onclick = clicaPonto
